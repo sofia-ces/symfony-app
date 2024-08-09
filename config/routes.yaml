@@ -1,5 +1,24 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+# controllers:
+#     resource:
+#         path: ../src/Controller/
+#         namespace: App\Controller
+#     type: attribute
+
+
+# config/routes.yaml
+app_customers:
+    path: /customers
+    controller: App\Controller\CustomerController::index
+
+app_customer_show:
+    path: /customers/{id}
+    controller: App\Controller\CustomerController::show
+#Test
+app_customers_test:
+    path: /customerstest
+    controller: App\Controller\CustomerController::indexTest
+
+app_customer_show_test:
+    path: /customershowtest/{id}
+    controller: App\Controller\CustomerController::showTest
+

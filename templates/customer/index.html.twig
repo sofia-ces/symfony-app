@@ -1,0 +1,11 @@
+{# templates/customer/index.html.twig #}
+<h1>Customers</h1>
+<ul>
+    {% for customer in customers %}
+        <li>
+            <a href="{{ path('app_customer_show', {'id': customer.id}) }}">
+                {{ customer.firstName }} {{ customer.lastName }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
