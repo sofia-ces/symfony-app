@@ -10,30 +10,13 @@ class CustomerControllerTest extends WebTestCase
 
     private $entityManager;
 
-    // protected function setUp(): void
-    // {
-    //     $kernel = self::bootKernel();
-    //     $this->entityManager = $kernel->getContainer()
-    //         ->get('doctrine')
-    //         ->getManager();
-    // }
-
-    // protected function tearDown(): void
-    // {
-    //     parent::tearDown();
-    //     $this->entityManager->close();
-    //     $this->entityManager = null; // avoid memory leaks
-    // }
+   
     
     public function testIndex(): void
     {
-        #$client = static::createClient();
-        $client = static::createClient();
-        // $this->entityManager = $client->getContainer()
-        //     ->get('doctrine')
-        //     ->getManager();
 
-        // Mock the CustomerRepository
+        $client = static::createClient();
+
         $customerRepository = $this->createMock(\App\Repository\CustomerRepository::class);
         $client->getContainer()->set('doctrine.orm.entity_manager', $this->createMock(\Doctrine\ORM\EntityManager::class));
         $client->getContainer()->set('App\Repository\CustomerRepository', $customerRepository);
@@ -75,47 +58,6 @@ class CustomerControllerTest extends WebTestCase
     }
 
 
-    
-    // public function testShow(): void
-    // {
-    //     $client = static::createClient();
-    
-    //     // Mock the CustomerRepository
-    //     $customerRepository = $this->createMock(\App\Repository\CustomerRepository::class);
-    //     $client->getContainer()->set('doctrine.orm.entity_manager', $this->createMock(\Doctrine\ORM\EntityManager::class));
-    //     $client->getContainer()->set('App\Repository\CustomerRepository', $customerRepository);
-
-    //     // Define mock data for a customer
-    //     $customer = new \App\Entity\Customer();
-    //     $customer->setFirstName('Dolores');
-    //     $customer->setLastName('Thomas');
-    //     $customer->setEmail('dolores.thomas@example.com');
-    //     $customer->setUsername('goldengorilla897');
-    //     $customer->setGender('female');
-    //     $customer->setNationality('AU');
-    //     $customer->setCity('Queanbeyan');
-    //     $customer->setPhone('02-2322-9102');
-
-    //     $customerRepository->method('find')->willReturn($customer);
-
-    //     $client->request('GET', '/customerstest/703');
-
-    //     $this->assertResponseIsSuccessful();
-
-    //     $this->assertJson($client->getResponse()->getContent());
-
-    //     $responseData = json_decode($client->getResponse()->getContent(), true);
-
-    //     $this->assertArrayHasKey('firstname', $responseData);
-    //     $this->assertArrayHasKey('lastname', $responseData);
-    //     $this->assertArrayHasKey('email', $responseData);
-    //     $this->assertArrayHasKey('username', $responseData);
-    //     $this->assertArrayHasKey('gender', $responseData);
-    //     $this->assertArrayHasKey('nationality', $responseData);
-    //     $this->assertArrayHasKey('city', $responseData);
-    //     $this->assertArrayHasKey('phone', $responseData);
-    // }
-
     public function testShow(): void
     {
         $client = static::createClient();
@@ -152,33 +94,6 @@ class CustomerControllerTest extends WebTestCase
           $this->assertArrayHasKey('id', $data);
 
 
-        // Create a new customer entity and persist it to the database
-        // $customer = new \App\Entity\Customer();
-        // $customer->setFirstname('Dolores');
-        // $customer->setLastName('Thomas');
-        // $customer->setEmail('dolores.thomas@example.com3');
-        // $customer->setUsername('goldengorilla897');
-        // $customer->setPassword('12345');
-        // $customer->setGender('female');
-        // $customer->setNationality('AU');
-        // $customer->setCity('Queanbeyan');
-        // $customer->setPhone('02-2322-9102');
-        // $this->entityManager->persist($customer);
-        // $this->entityManager->flush();
-
-      
-        // $client->request('GET', '/customershowtest/' . '1');
-
-        // $response = $client->getResponse();
-        // $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-
-        // $content = $response->getContent();
-        // $this->assertJson($content);
-
-        // $data = json_decode($content, true);
-        // $this->assertArrayHasKey('id', $data);
-        // $this->assertEquals($customer->getId(), $data['id']);
-        // $this->assertEquals('Test Customer', $data['name']);
     }
 
     public function testShowNotFound(): void
